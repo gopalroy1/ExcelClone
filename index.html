@@ -9,10 +9,51 @@
 </head>
 
 <body>
+    <div class="style-row">
+        <div class="font-div">
+            <button id="bold-button">Bold</button>
+            <button id="italic-button">Italic</button>
+            <button id="underline-button">Underline</button>
+        </div>
+        <div class="font">
+            <select id="font-size" >
+                <option >12px</option>
+                <option>14px</option>
+                <option>16px</option>
+                <option>18px</option>
+                <option>20px</option>
+                <option>22px</option>
+                <option>24px</option>
+                <option>26px</option>
+                <option>28px</option>
+                <option>30px</option>
+            </select>
+            <select id="font-family">
+                <option> monospace</option>
+                <option> san-serif</option>
+                <option> Calibri</option>
+                <option> arial</option>
+            </select>
+        </div>
+        <div class="text-aling">
+            <button id="middle">middle</button>
+            <button id="left">left</button>
+            <button id="right">Right</button>
+        </div>
+        <div class="paste">
+            <button id="cut">cut</button>
+            <button id="copy">copy</button>
+            <button id="paste">paste</button>
+        </div>
+    </div>
+    
+    <div class="upper-row">
+        <p id="element-selected">No Cells Selected</p>
+    </div>
     <table  id="main-table">
         <thead id="table-head">
             <tr id="row-1">
-                <td> </td>
+                <td contenteditable="true"> </td>
             </tr>
             <!-- <tr>
                 <td> 1</td>

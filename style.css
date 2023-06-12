@@ -1,5 +1,14 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: red;
+}
+#main-table{
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+td{
+    min-width: 75px;
+    height: 27px;
+    border: 1px solid black;
+    overflow-x: auto;
 }

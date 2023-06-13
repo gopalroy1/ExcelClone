@@ -52,6 +52,29 @@ for(let i =1;i<= 200;i++){
 function addFocus(event){
     currentCell = event.target;
     elementSelected.innerText= event.target.id;
+    saveInMatrix(currentCell);
+}
+
+//Creating funtionalities for saving the Excel sheet 
+//Saving as soon as any changes happens to the sheet content
+//Generating a matrix of size of the sheet and saving the details
+let mat = new Array(100);
+for (let i = 0; i < mat.length; i++) {
+    mat[i]= new Array(26);
+}
+//Making a function which will take current element and then store in the matrix
+function saveInMatrix(currentCell){
+    console.log(currentCell);
+    let ob = {};
+    ob.text = currentCell.innerText;
+    ob.id = currentCell.id;
+    ob.style= currentCell.style.cssText;
+    
+    //Saving object ln the matrix
+    let ind = ob.id.split("");
+    let i = ind[1]-1;
+    let j = ind[0].charCodeAt(0)-65;
+    mat[i][j]= ob;
 }
 
 //Onclick functionalties 
@@ -62,6 +85,8 @@ boldBtn.addEventListener("click",(event)=>{
     } else {
         currentCell.style.fontWeight = "bold";
     }
+    saveInMatrix(currentCell);
+
     
 });
 italicBtn.addEventListener("click",()=>{
@@ -70,39 +95,44 @@ italicBtn.addEventListener("click",()=>{
     } else {
         currentCell.style.fontStyle="italic";
     }
+    saveInMatrix(currentCell);
 });
 underlineBtn.addEventListener("click",()=>{
-    console.log("afh");
     if (currentCell.style.textDecoration=="underline") {
-        console.log("inif");
         currentCell.style.textDecoration="none";
     } else {
-        console.log("else")
         currentCell.style.textDecoration="underline";
     }
+    saveInMatrix(currentCell);
 });
 
 fontSizeOption.addEventListener("change",()=>{
     console.log('inside select');
     currentCell.style.fontSize = fontSizeOption.value;
+    saveInMatrix(currentCell);
 })
 fontFamilyOption.addEventListener("change",()=>{
     currentCell.style.fontFamily = fontFamilyOption.value;
+    saveInMatrix(currentCell);
 })
 leftAlingBtn.addEventListener("click",()=>{
     currentCell.style.textAlign = leftAlingBtn.innerText;
+    saveInMatrix(currentCell);
 });
 middleAlingBtn.addEventListener("click",()=>{
     currentCell.style.textAlign = "center";
+    saveInMatrix(currentCell);
 });
 rightAlingBtn.addEventListener("click",()=>{
     
     currentCell.style.textAlign = "right";
+    saveInMatrix(currentCell);
 });
 cutBtn.addEventListener("click",()=>{
     toBePasted.text = currentCell.innerText;
     toBePasted.style = currentCell.style.cssText;
     currentCell.innerText="";
+    saveInMatrix(currentCell);
 })
 copyBtn.addEventListener("click",()=>{
     toBePasted.text = currentCell.innerText;
@@ -111,4 +141,5 @@ copyBtn.addEventListener("click",()=>{
 pasteBtn.addEventListener("click",()=>{
     currentCell.innerText=toBePasted.text;
     currentCell.style.cssText=toBePasted.style;
+    saveInMatrix(currentCell);
 })
